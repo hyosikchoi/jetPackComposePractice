@@ -39,31 +39,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeExTheme {
                 // A surface container using the 'background' color from the theme
-//                Column(modifier = Modifier.padding(24.dp)) {
-//                    Greeting(name = "안녕")
-//                    Greeting(name = "잘지내")
-//                    Greeting(name = "나야나")
-//                }
-//                Greeting(names = listOf<String>("안녕","잘가","잘지내"))
                 MyOnboarding()
-            //MyApp()
             }
         }
-
-//        lifecycleScope.launch {
-//            val stTime = System.currentTimeMillis()
-//            val lastName : Deferred<String> = async {
-//                delay(1000)
-//                "최"
-//            }
-//            val name : Deferred<String> = async {
-//                delay(2000)
-//                "효식"
-//            }
-//
-//            Log.d("lastname" , "${lastName.await()}${name.await()} , time : ${System.currentTimeMillis() - stTime}")
-//        }
-
     }
 }
 
