@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,7 +58,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyOnboarding() {
-    var shouldShowOnboarding by remember { mutableStateOf(true) }
+    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
 
     if(shouldShowOnboarding) {
         OnboardingScreen(onContinueClicked = {shouldShowOnboarding = false})
@@ -104,7 +105,8 @@ fun MyApp(names: List<String> = List(1000) {"$it"}) {
 @Composable
 fun Greeting(name: String) {
     /** remember를 사용하여 state가 다시 false로 리컴포지션 되는것을 방지 */
-    val expanded = remember { mutableStateOf(false)}
+    /** rememberSaveable로 변경하여 상태값을 저장하여 화면회전이나 스크롤이동시에도 변함없이 되게끔 적용 */
+    val expanded = rememberSaveable { mutableStateOf(false)}
 
     val extraPadding = if(expanded.value) 48.dp else 0.dp
 
