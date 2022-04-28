@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -91,9 +93,9 @@ fun OnboardingPreview() {
     }
 }
 @Composable
-fun MyApp(names: List<String> = listOf<String>("안녕", "잘가", "잘지내")) {
-    Column(modifier = Modifier.padding(vertical = 4.dp)) {
-        for (name in names) {
+fun MyApp(names: List<String> = List(1000) {"$it"}) {
+    LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
             Greeting(name = name)
         }
     }
